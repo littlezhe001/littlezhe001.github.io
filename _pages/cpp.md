@@ -3,7 +3,7 @@ layout: archive
 title: "cpp算法经典问题"
 author_profile: true
 redirect_from:
-  - /cpp_code
+  - /cpp_code/
 ---
 
 - 八皇后问题

@@ -134,7 +134,8 @@ pub fn sys_get_time(ts: *mut TimeVal, _tz: usize) -> isize {
 
 
 - 对每次的系统调用记录在系统内核空间之中
-``` rust 
+
+```rust 
 /// YOUR JOB: Finish sys_task_info to pass testcases
 pub fn sys_task_info(_ti: *mut TaskInfo) -> isize {
     trace!("kernel: sys_task_info");
@@ -177,9 +178,12 @@ pub fn sys_task_info(_ti: *mut TaskInfo) -> isize {
 
 ```
 
+
+
 - `os/src/task/mod.rs`
-- 更新`TaskManagerInner`结构体
-``` rust 
+    - 更新`TaskManagerInner`结构体
+
+```rust 
 /// Inner of Task Manager
 pub struct TaskManagerInner {
     /// task list
