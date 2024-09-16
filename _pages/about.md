@@ -1,76 +1,78 @@
-## 基本信息
+# Lun Zhe
 
-- 年龄：21岁
-- 性别：男
-- 籍贯：河南省焦作市
-- 入党积极分子
-- 出生日期：2003-02-18
-- 联系方式：13569109525
-- 微信：lz2673664288
-- Email：lz2673664288@gmail.com
+## Basic Information
 
-## 教育背景
+- Age: 21
+- Gender: Male
+- Place of Origin: Jiaozuo City, Henan Province
+- Active Applicant for Party Membership
+- Date of Birth: February 18, 2003
+- Contact Number: 13569109525
+- WeChat: lz2673664288
+- Email: lz2673664288@gmail.com
 
-### 中国矿业大学
+## Education Background
 
-- 数学学院 数学大类专业 2021.9-2022.6
-- 计算机科学与技术学院 信息安全专业 2022.9-至今
-- 加权平均分：82.7
-- 专业排名：32
-- GPA：3.41
-- 四级成绩：499
+### China University of Mining and Technology
 
-## 荣誉奖项
+- School of Mathematics, Major in Mathematics, Sep 2021 - Jun 2022
+- School of Computer Science and Technology, Major in Information Security, Sep 2022 - Present
+- Weighted Average Score: 82.7
+- Class Ranking: 32
+- GPA: 3.41
+- CET-4 Score: 499
 
-- 数学学院 春晖励志奖学金 2022年5月
-- 数学学院 校级三等奖学金 2022年9月
-- 计算机科学与技术学院 校级三等奖学金 2023年9月
-- 中国高校计算机大赛全国总决赛成功参赛奖 2023年5月
-- 五一数学建模数学竞赛优秀奖 2022年5月
+## Honors and Awards
 
-## 专业技能
+- Chunhui Inspirational Scholarship, School of Mathematics, May 2022
+- Third-Class Scholarship, School of Mathematics, September 2022
+- Third-Class Scholarship, School of Computer Science and Technology, September 2023
+- Successful Participant Award, National Finals of China College Computer Contest, May 2023
+- Excellence Award, May 1 Mathematical Modeling Competition, May 2022
 
-- 编程语言：C++/Python/Rust/Java/JavaScript/PHP
-- 技能：
-  - 熟悉RSA/Hash加密原理及操作，可使用多种语言进行加解密的实现；
-  - 对CTF中的Crypto等问题有过学习，擅长使用python编写脚本破解RSA类型的ctf密码学题目；
-  - 熟悉基于的OPENGL的imgui的桌面应用框架，制作简单的高性能桌面应用程序，能够通过利用imgui的工具控制程序的分辨率和刷新率；
-  - 有网络企业实习的经历，曾在河南省夺冠集团实习2个月有余，能够基于Vue前端，Laravel后端的框架构建网页和微信小程序，并且熟悉数据库sql的简单的优化方法。
+## Professional Skills
 
-## 社团和组织经历
+- Programming Languages: C++/Python/Rust/Java/JavaScript/PHP
+- Skills:
+  - Familiar with RSA/Hash encryption principles and operations, capable of implementing encryption and decryption in multiple languages;
+  - Experience in learning Crypto problems in CTF, proficient in using Python to script and crack RSA-type CTF cryptographic problems;
+  - Familiar with the imgui desktop application framework based on OPENGL, capable of creating simple high-performance desktop applications, and able to control the program's resolution and refresh rate using imgui tools;
+  - Internship experience in a network company, over 2 months at Henan Championship Group, capable of building web pages and WeChat mini-programs based on Vue front-end and Laravel back-end frameworks, and familiar with simple optimization methods for SQL databases.
 
-- 数学学院21级2班班委 2021年09月 – 2022年06月
-  - 学习委员
-  - 管理班级日常的组织学习的任务，在临近考试的期间组织集体学习的活动和同学间的互相答疑，我在任期间，达到了班级英语cet4级90%的通过率，专业课80%的合格率，学年终获得班级优秀班干部的荣誉。
-- 中国矿业大学墨韵书法社团 2021年09月 – 2021年12月
-  - 成员
-  - 和同社团成员学习书法并进行书法作品的创作，并且热衷于书写书法艺术作品，参加相关的业余书法毛笔字的比赛。
+## Club and Organization Experience
 
-## 兴趣爱好
+- Class Committee of Class 2, Grade 2021, School of Mathematics, Sep 2021 - Jun 2022
+  - Study Committee Member
+  - Managed daily study organization tasks for the class, organized collective study activities and peer-to-peer Q&A sessions during exam periods. During my tenure, the class achieved a 90% pass rate for the CET-4 English test and an 80% pass rate for major courses, and I was honored as an outstanding class cadre at the end of the academic year.
+- Member of the China University of Mining and Technology's Calligraphy Club, Sep 2021 - Dec 2021
+  - Member
+  - Studied calligraphy with club members and created calligraphy works, participated in amateur calligraphy competitions with a passion for writing calligraphic art pieces.
 
-- 性格乐观开朗，酷爱运动，热爱健身，擅长打篮球与乒乓球，有过参加比赛并获奖的经历。
+## Hobbies and Interests
 
-## 研究经历
+- Optimistic and cheerful personality, fond of sports, passionate about fitness, good at playing basketball and table tennis, with experience in participating in competitions and winning awards.
 
-### 基于Rust的RISC-V内核源码编写（可现场演示） 2023年09月 – 2023年11月
+## Research Experience
 
-- 项目来源：[清华大学Rust开源操作系统训练营](https://github.com/LearningOS/2023-littlezhe001)
-- 基于Unbutu系统以及QEMU模拟器，模拟risc64位系统环境运行系统，直接更改内核源码。
-  1. 针对系统的任务管理器(TaskManager)模块，增加系统调用任务信息(TaskInfo)，以增加任务管理器(TaskManager)的信息，使得每次调用任务管理器(TaskManager)，例如读，写等操作，获取当前时间等操作都能够记录在内核空间中的数组syscall_times中。
-  2. 针对任务信息(TaskInfo)的系统调用所对应的结构体(taskinfo)，增加结构体的元素，定义运行时间元素(time)，从开始调用的时间开始，从内核空间开始记录运行的时间，从而达到精准测量系统调用时间的目的。
+### Rust-based RISC-V Kernel Source Code Writing (Demonstrable Live), Sep 2023 - Nov 2023
 
-### Linux内核源码中的内存保护与NX位 2023年03月 – 2023年05月
+- Project Source: [Tsinghua University Rust Open Source Operating System Training Camp](https://github.com/LearningOS/2023-littlezhe001)
+- Based on the Ubuntu system and QEMU simulator, simulate the risc64 system environment to run the system and directly modify the kernel source code.
+  1. For the system's Task Manager module, added system call task information (TaskInfo) to increase the information of the Task Manager, so that every time the Task Manager is called, such as read, write, and other operations, and obtaining the current time, can be recorded in the kernel space array syscall_times.
+  2. For the system call corresponding to the task information (TaskInfo), added elements to the structure (taskinfo), defined the running time element (time), and started recording the running time from the kernel space from the start of the call, in order to accurately measure the system call time.
 
-- 指导老师：李勇刚
-- 通过使用gdb等调试工具或ebpf等内核观测工具，找出linux内核是通过哪些系统调用和函数在内存管理上进行保护。
-  1. 编写内存溢出的漏洞代码，在Centos7操作系统上运行，使用gdb工具逐步调试漏洞代码，观察程序因为段错误(segmentation fault)被linux内核强制终止时所调用的内核函数以及系统调用(syscall)。
-  2. 阅读地址随机化(aslr)相关的论文，在linux内核4.0以上的版本对论文中的源码进行复现，并使用文中的python代码(benchmark)对现有的已经随机化的地址和未随机化的地址进行对比。
-  3. 了解Linux内核通过硬件(NX位)保护系统内存的方式，并通过ebpf工具锁定指定的系统调用，跟踪系统调用函数如何在内核层面上运行。
+### Linux Kernel Source Code Memory Protection and NX Bit, Mar 2023 - May 2023
 
-### 基于Rustlings框架下的Rust学习 2024年03月 – 2024年05月
+- Advisor: Li Yonggang
+- Identified how the Linux kernel protects memory management through system calls and functions using debugging tools like gdb or kernel observation tools like ebpf.
+  1. Wrote memory overflow vulnerability code, ran it on the Centos7 operating system, and used the gdb tool to debug the vulnerability code step by step, observing the kernel functions and system calls (syscall) when the program was forcibly terminated by the Linux kernel due to a segmentation fault.
+  2. Read papers related to address randomization (ASLR), reproduced the source code from the papers in Linux kernel versions above 4.0, and used the Python code (benchmark) from the paper to compare the addresses that have been randomized with those that have not been randomized.
+  3. Learned how the Linux kernel protects system memory through hardware (NX bit) and used the ebpf tool to lock specified system calls, tracking how system call functions operate at the kernel level.
 
-- 项目来源：[清华大学Rust开源操作系统](https://github.com/LearningOS/rust-rustlings-2024-spring-littlezhe001)
-- 基于Rust语言进行基本的数据结构的安全化构建，利用Rust的特性对链式存储结构进行保护以防止内存泄漏。
-  1. 学习基本的rust语言的语法，以及rust基本的数据结构，基于ubutun系统搭建rust编译的环境。
-  2. 基于rust进行多线程编程，并学习原子语句实现基本的信号量机制，编写简单的程序实现互斥的效果。
-  3. 编写链表，二叉树等基础的数据结构，利用rust的生命周期的特性，禁止内存管理上出现泄露(空指针)。
+### Rust Learning under the Rustlings Framework, Mar 2024 - May 2024
+
+- Project Source: [Tsinghua University Rust Open Source Operating System](https://github.com/LearningOS/rust-rustlings-2024-spring-littlezhe001)
+- Conducted basic data structure construction with safety features in Rust, using Rust's characteristics to protect linked storage structures to prevent memory leaks.
+  1. Learned the basic syntax of the Rust language and its basic data structures, set up the Rust compilation environment on the Ubuntu system.
+  2. Engaged in multithreading programming in Rust and learned to implement basic semaphore mechanisms using atomic statements, writing simple programs to achieve mutual exclusion effects.
+  3. Wrote basic data structures such as linked lists and binary trees, using Rust's lifetime features to prohibit memory management leaks (null pointers).
