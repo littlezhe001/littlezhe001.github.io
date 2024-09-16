@@ -6,6 +6,6 @@
 
 main:
   - title: "Rust Risc-V 源代码"
-    url: /rust/
+    url: rust/
   - title: "c语言算法练习"
-    url: /cpp_code/
+    url: cpp_code/
