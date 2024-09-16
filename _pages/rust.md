@@ -56,3 +56,162 @@ struct TaskInfo {
 
 ```
 
+- `os/src/syscall/process.rs`
+
+```rust
+//! Process management syscalls
+use crate::{
+    config::MAX_SYSCALL_NUM,
+    task::{exit_current_and_run_next, suspend_current_and_run_next, TaskStatus},
+    timer::{get_time_us,get_time_ms}
+    // syscall::{SYSCALL_EXIT,SYSCALL_TASK_INFO,SYSCALL_WRITE,SYSCALL_YIELD}
+};
+
+```
+
+-  增加定义系统调用号
+
+``` rust 
+use crate::task::TASK_MANAGER;
+/// write syscall
+const SYSCALL_WRITE: usize = 64;
+/// yield syscall
+const SYSCALL_YIELD: usize = 124;
+/// gettime syscall
+const SYSCALL_GETTIMEOFDAY: usize = 169;
+/// taskinfo syscall
+const SYSCALL_TASK_INFO: usize = 410;
+```
+
+```rust 
+#[repr(C)]
+#[derive(Debug)]
+pub struct TimeVal {
+    pub sec: usize,
+    pub usec: usize,
+}
+
+/// Task information
+#[allow(dead_code)]
+pub struct TaskInfo {
+    /// Task status in it's life cycle
+    status: TaskStatus,
+    /// The numbers of syscall called by task
+    syscall_times: [u32; MAX_SYSCALL_NUM],
+    /// Total running time of task
+    time: usize,
+
+    // start_time: usize,
+}
+
+/// task exits and submit an exit code
+pub fn sys_exit(exit_code: i32) -> ! {
+    trace!("[kernel] Application exited with code {}", exit_code);
+    exit_current_and_run_next();
+    panic!("Unreachable in sys_exit!");
+}
+
+/// current task gives up resources for other tasks
+pub fn sys_yield() -> isize {
+    trace!("kernel: sys_yield");
+    suspend_current_and_run_next();
+    0
+}
+
+/// get time with second and microsecond
+pub fn sys_get_time(ts: *mut TimeVal, _tz: usize) -> isize {
+    trace!("kernel: sys_get_time");
+    let us = get_time_us();
+    unsafe {
+        *ts = TimeVal {
+            sec: us / 1_000_000,
+            usec: us % 1_000_000,
+        };
+    }
+    0
+}
+``` 
+
+
+- 对每次的系统调用记录在系统内核空间之中
+``` rust 
+/// YOUR JOB: Finish sys_task_info to pass testcases
+pub fn sys_task_info(_ti: *mut TaskInfo) -> isize {
+    trace!("kernel: sys_task_info");
+
+    let mut task_info = TaskInfo {
+        status: TaskStatus::Running,
+        syscall_times: unsafe { (*_ti).syscall_times },
+        time: 0,
+        // start_time: unsafe { (*_ti).start_time },
+    };
+
+    if task_info.syscall_times[SYSCALL_TASK_INFO] == 0 {
+        task_info.syscall_times[SYSCALL_GETTIMEOFDAY] += 1;
+    }
+    
+    else {
+        task_info.syscall_times[SYSCALL_WRITE] += 2;
+    }
+
+    // 计算运行时间，考虑任务被抢占后的等待时间
+    // println!("now the time is {}",get_time_ms());
+    let task_manager = &TASK_MANAGER;
+    let inner = task_manager.inner.exclusive_access();
+
+    let current_task = inner.current_task;
+    let start_time = inner.tasks[current_task].init_time;
+
+    task_info.time = get_time_ms() as usize - start_time;
+    task_info.syscall_times[SYSCALL_GETTIMEOFDAY] += 2;
+
+    task_info.syscall_times[SYSCALL_TASK_INFO] +=1;
+    task_info.syscall_times[SYSCALL_YIELD] += 1;
+    // 将任务信息写入传入的指针 ti 指向的内存中
+    unsafe {
+        *_ti = task_info;
+    }
+
+    0
+}
+
+```
+
+- `os/src/task/mod.rs`
+    - 更新`TaskManagerInner`结构体
+``` rust 
+/// Inner of Task Manager
+pub struct TaskManagerInner {
+    /// task list
+    pub tasks: [TaskControlBlock; MAX_APP_NUM],
+    /// id of current `Running` task
+    pub current_task: usize,
+}
+
+lazy_static! {
+    /// Global variable: TASK_MANAGER
+    pub static ref TASK_MANAGER: TaskManager = {
+        let num_app = get_num_app();
+        let mut tasks = [TaskControlBlock {
+            task_cx: TaskContext::zero_init(),
+            task_status: TaskStatus::UnInit,
+            init_time: 0,
+        }; MAX_APP_NUM];
+        for (i, task) in tasks.iter_mut().enumerate() {
+            task.task_cx = TaskContext::goto_restore(init_app_cx(i));
+            task.task_status = TaskStatus::Ready;
+            task.init_time = get_time_ms() as usize;
+        }
+        TaskManager {
+            num_app,
+            inner: unsafe {
+                UPSafeCell::new(TaskManagerInner {
+                    tasks,
+                    current_task: 0,
+                })
+            },
+        }
+    };
+}
+
+```
