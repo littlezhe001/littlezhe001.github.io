@@ -178,7 +178,7 @@ pub fn sys_task_info(_ti: *mut TaskInfo) -> isize {
 ```
 
 - `os/src/task/mod.rs`
-    - 更新`TaskManagerInner`结构体
+- 更新`TaskManagerInner`结构体
 ``` rust 
 /// Inner of Task Manager
 pub struct TaskManagerInner {
